@@ -3,13 +3,16 @@ pipeline {
 
     stages {
         stage('Build') {
-            bat '''
-            echo "Checking Node version..."
-            node --version
-            echo "Checking npm version..."
-            npm --version
-            npm run build
-            '''
+            steps {
+                bat '''
+                echo "Checking Node version..."
+                node --version
+                echo "Checking npm version..."
+                npm --version
+                npm run build
+                '''
+            }
+            
         }
     }
 }
