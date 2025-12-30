@@ -2,13 +2,16 @@ pipeline {
     agent any
 
     stages {
-        stage('Build') {
+        stage('Build in Docker') {
             steps {
                 bat '''
-                docker run --rm -v "%cd%:/app" -w /app node:18-alpine sh -c npm install && npm run build
+                docker run --rm ^
+                  -v "%cd%:/app" ^
+                  -w /app ^
+                  node:18-alpine ^
+                  sh -c "npm install && npm run build"
                 '''
             }
-            
         }
     }
 }
