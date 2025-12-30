@@ -5,14 +5,15 @@ pipeline {
         stage('Build') {
             steps {
                 bat '''
+                @echo on
                 echo "Checking Node version..."
                 node --version
                 echo "Checking npm version..."
                 npm --version
                 echo "Installing Dependencies"
-                npm install
+                call npm install
                 echo "Building..."
-                npm run build
+                call npm run build
                 '''
             }
             
