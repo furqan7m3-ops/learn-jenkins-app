@@ -5,15 +5,7 @@ pipeline {
         stage('Build') {
             steps {
                 bat '''
-                @echo on
-                echo "Checking Node version..."
-                node --version
-                echo "Checking npm version..."
-                npm --version
-                echo "Installing Dependencies"
-                call npm install
-                echo "Building..."
-                call npm run build
+                docker run --rm -v "%cd%:/app" -w /app node:18-alpine sh -c npm install && npm run build
                 '''
             }
             
