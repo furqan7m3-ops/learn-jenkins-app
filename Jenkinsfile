@@ -9,6 +9,9 @@ pipeline {
                 node --version
                 echo "Checking npm version..."
                 npm --version
+                echo "Installing Dependencies"
+                npm install
+                echo "Building..."
                 npm run build
                 '''
             }
